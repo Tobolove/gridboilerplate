@@ -1,0 +1,106 @@
+/* Basic Reset & Body Setup */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+    display: grid;
+    gap: 10px; /* Optional: adds space between grid items */
+    background-color: #f0f0f0; /* Light background for the page */
+
+    /* Mobile First: Stacked Layout */
+    grid-template-columns: 1fr; /* Single column */
+    grid-template-rows: auto auto 1fr auto auto; /* Rows for header, nav, main, aside, footer */
+    grid-template-areas:
+        "header"
+        "sidebar-left"
+        "main-content"
+        "sidebar-right"
+        "footer";
+}
+
+/* Grid Area Assignments and Styling for each section */
+.page-header {
+    grid-area: header; /* Assigns to the 'header' area defined in body's grid-template-areas */
+    background-color: #6f8faf; /* Light blue */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.sidebar-left {
+    grid-area: sidebar-left;
+    background-color: #a7c4a0; /* Light green */
+    padding: 15px;
+}
+
+.main-content {
+    grid-area: main-content;
+    background-color: #f7e9a6; /* Light yellow */
+    padding: 20px;
+
+    /* Nested grid for the 3 blocks inside main-content */
+    display: grid;
+    grid-template-rows: repeat(3, 1fr); /* 3 equal rows for the blocks */
+    gap: 10px; /* Space between blocks */
+}
+
+.main-block {
+    background-color: #f4c9a3; /* Light orange */
+    padding: 15px;
+    border-radius: 5px;
+    display: flex; /* For centering text if needed */
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-right {
+    grid-area: sidebar-right;
+    background-color: #d2a8d8; /* Light purple */
+    padding: 15px;
+}
+
+.page-footer {
+    grid-area: footer;
+    background-color: #888888; /* Grey */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Tablet and Desktop Layout - Overrides for larger screens */
+@media (min-width: 768px) {
+    body {
+        /* Columns: Left Sidebar, Main Content, Right Sidebar */
+        grid-template-columns: 1fr 2fr; /* Adjust ratios as needed */
+        /* Rows: Header, Content Area (Sidebars & Main), Footer */
+        grid-template-rows: auto 1fr auto; /* Main content area takes available space */
+        grid-template-areas:
+            "header header"
+            "sidebar-left main-content"
+            "sidebar-right sidebar-right"
+            "footer footer";
+    }
+
+    /* Example: You could change the layout of .main-block elements on larger screens too
+    .main-content {
+        grid-template-columns: repeat(3, 1fr); // Arrange blocks horizontally
+        grid-template-rows: 1fr; // In a single row
+    }
+    */
+}
+
+/* Optional: For very large screens, you might want to cap the width */
+@media (min-width: 1200px) {
+    body {
+        grid-template-columns: 1fr 3fr 1fr; /* Left Sidebar, Main Content, Right Sidebar */
+        grid-template-rows: auto 1fr auto; /* Header, Content Area, Footer */
+        grid-template-areas:
+            "header header header"
+            "sidebar-left main-content sidebar-right"
+            "footer footer footer";
+            
+        max-width: 1200px; /* Max width for the whole layout */
+        margin-left: auto; /* Center the layout */
+        margin-right: auto;
+    }
+}
