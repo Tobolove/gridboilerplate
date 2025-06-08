@@ -40,7 +40,7 @@ body {
 
     /* Nested grid for the 3 blocks inside main-content */
     display: grid;
-    grid-template-rows: repeat(3, 1fr); /* 3 equal rows for the blocks */
+    grid-template-rows: repeat(4, 1fr); /* 3 equal rows for the blocks */
     gap: 10px; /* Space between blocks */
 }
 
@@ -81,12 +81,12 @@ body {
             "footer footer";
     }
 
-    /* Example: You could change the layout of .main-block elements on larger screens too
+    
     .main-content {
-        grid-template-columns: repeat(3, 1fr); // Arrange blocks horizontally
-        grid-template-rows: 1fr; // In a single row
+        grid-template-columns: repeat(2, 1fr); 
+        
     }
-    */
+    
 }
 
 /* Optional: For very large screens, you might want to cap the width */
@@ -103,4 +103,9 @@ body {
         margin-left: auto; /* Center the layout */
         margin-right: auto;
     }
+    .main-content {
+        grid-template-columns: repeat(4, 1fr); 
+        
+    }
+    
 }
